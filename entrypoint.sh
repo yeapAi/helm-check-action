@@ -16,8 +16,8 @@ function displayInfo {
   echo
   printDelimeter
   echo
-  HELM_CHECK_VERSION="v0.1.4"
-  HELM_CHECK_SOURCES="https://github.com/igabaydulin/helm-check-action"
+  HELM_CHECK_VERSION="v0.1.0"
+  HELM_CHECK_SOURCES="https://github.com/yeapAi/helm-check-action"
   echo "Helm-Check $HELM_CHECK_VERSION"
   echo -e "Source code: $HELM_CHECK_SOURCES"
   echo
@@ -49,9 +49,14 @@ function helmTemplate {
   echo -e "2. Trying to render templates with provided values\n"
   if [[ "$1" -eq 0 ]]; then
     if [ -n "$CHART_VALUES" ]; then
-      echo "helm template --values $CHART_VALUES $CHART_LOCATION"
+      IFS=' ' read -r -a CHART_VALUES <<< "$CHART_VALUES"
+      VALUES=""
+      for VALUE in "${CHART_VALUES[@]}"; do
+        VALUES="$VALUES --values $VALUE" 
+      done
+      echo "helm template $VALUES $CHART_LOCATION"
       printStepExecutionDelimeter
-      helm template --values "$CHART_VALUES" "$CHART_LOCATION"
+      helm template $VALUES "$CHART_LOCATION"
       HELM_TEMPLATE_EXIT_CODE=$?
       printStepExecutionDelimeter
       if [ $HELM_TEMPLATE_EXIT_CODE -eq 0 ]; then
