@@ -9,6 +9,8 @@ LABEL com.github.actions.description="Checks if helm templates are valid"
 LABEL com.github.actions.icon="cloud"
 LABEL com.github.actions.color="blue"
 
+RUN apk add --no-cache bash
+
 ADD entrypoint.sh /entrypoint.sh
-ENTRYPOINT ["sh", "/entrypoint.sh"]
+ENTRYPOINT ["bash", "/entrypoint.sh"]
 
