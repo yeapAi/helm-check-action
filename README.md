@@ -17,7 +17,7 @@ commands
 
 ## Environment variables
 * `CHART_LOCATION`: chart folder; required field for `helm lint` and `helm template` executions
-* `CHART_VALUES`: custom values file for specific kubernetes environment; required field for `helm template` execution
+* `CHART_VALUES`: custom values files (separate by space) for specific kubernetes environment; required field for `helm template` execution
 
 ## Sample
 [helm-check-action-sample](https://github.com/igabaydulin/helm-check-action-sample) is a sample which uses this action
@@ -136,14 +136,17 @@ You can test script locally, but make sure you have all needed tools (helm at le
 to test action on Linux system:
 
 1. Clone action repository
-1. Make sure entrypoint.sh is executable, otherwise execute next command in terminal:
+2. Make sure entrypoint.sh is executable, otherwise execute next command in terminal:
 
     ```
     igabaydulin@localhost:~/dev/helm-check-action$ chmod +x ./entrypoint.sh
     ```
-1. Move to your repository and execute next command in terminal:
+3. Move to your repository and execute next command in terminal:
 
     ```
     igabaydulin@localhost:~/dev/my-local-repository$ CHART_LOCATION=/path/to/chart CHART_VALUES=/path/to/values/values.yaml /path/to/entrypoint.sh
     ```
-
+  Multiple values files example :
+    ```
+    igabaydulin@localhost:~/dev/my-local-repository$ CHART_LOCATION=/path/to/chart CHART_VALUES="/path/to/values/values.yaml /path/to/values/values-2.yaml" /path/to/entrypoint.sh
+    ``` 
