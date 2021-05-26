@@ -1,4 +1,4 @@
-FROM alpine/helm:2.16.0
+FROM alpine/helm:3.5.4
 
 LABEL version="0.1.0"
 LABEL repository="https://github.com/yeapAi/helm-check-action"
