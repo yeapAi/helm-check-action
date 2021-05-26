@@ -146,7 +146,9 @@ to test action on Linux system:
     ```
     igabaydulin@localhost:~/dev/my-local-repository$ CHART_LOCATION=/path/to/chart CHART_VALUES=/path/to/values/values.yaml /path/to/entrypoint.sh
     ```
-  Multiple values files example :
+    
+    Multiple values files example :
+
     ```
     igabaydulin@localhost:~/dev/my-local-repository$ CHART_LOCATION=/path/to/chart CHART_VALUES="/path/to/values/values.yaml /path/to/values/values-2.yaml" /path/to/entrypoint.sh
-    ``` 
+    ```
